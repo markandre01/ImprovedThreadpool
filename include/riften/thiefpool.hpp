@@ -132,6 +132,10 @@ class Thiefpool {
         }
     }
 
+    // helpers
+
+    std::int64_t get_in_flight() const { return _in_flight.load(); }
+
   private:
     // Fire and forget interface.
     template <std::invocable F> void execute(F &&f) {
