@@ -1,3 +1,6 @@
+Based on [https://github.com/ConorWilliams/Threadpool](this).
+Adds some statistics functions and helpers
+
 # `riften::Thiefpool`
 
 A blazing-fast, lightweight, work-stealing thread-pool for C++20. Built on the lock-free concurrent [`riften::Deque`](https://github.com/ConorWilliams/ConcurrentDeque).
