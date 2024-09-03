@@ -1,4 +1,4 @@
-Based on [https://github.com/ConorWilliams/Threadpool](this).
+Based on [this](https://github.com/ConorWilliams/Threadpool).
 Adds some statistics functions and helpers
 
 # `riften::Thiefpool`
