@@ -89,7 +89,7 @@ class Thiefpool {
 
                         // Loop until all the work is done.
                     } while (_in_flight.load(std::memory_order_acquire) > 0);
-
+                    _in_flight.notify_all();
                 } while (!tok.stop_requested());
             });
         }
@@ -134,7 +134,14 @@ class Thiefpool {
 
     // helpers
 
-    std::int64_t get_in_flight() const { return _in_flight.load(); }
+    std::int64_t get_in_flight() const { return _in_flight.load(std::memory_order_acquire); }
+
+    void await_empty_pool() const {
+        while (int64_t val = get_in_flight())
+        {
+            _in_flight.wait(val);
+        }
+    }
 
   private:
     // Fire and forget interface.
